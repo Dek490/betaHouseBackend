@@ -33,7 +33,7 @@ mongoose.connect('mongodb+srv://xasancumar:1zhHPp6abdOhvt1k@cluster0.d4o1wlf.mon
 // });
 //mesha u ka kacayo
 app.get('/',(req,res)=>{
-    res.json('hi wolrd')
+    res.json('api Waa uu shqeynaa ')
 })
 
 //routes
@@ -59,6 +59,8 @@ app.use('/contact',contactRoute)
 app.use('/images',imageRoute)
 app.use('/about',aboutRoute)
 app.use('/login',loginRoute)
+
+
 
 
 
