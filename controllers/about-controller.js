@@ -3,7 +3,7 @@ const { Aboutvalidation } = require('../validations/about-validation');
 
 const get = async (req, res) => {
   try {
-    const data = await aboutModel.find();
+    const data = await aboutModel.findOne().sort('-id')
     res.status(200).send(data);
   } catch (error) {
     res.status(404).send(error.message);
@@ -26,7 +26,7 @@ const Post = async (req, res) => {
     const { error } = Aboutvalidation(req.body);
     if (error) return res.status(400).send(error.message);
 
-    const getabout = await aboutModel.findOne().sort('-created_at')
+    const getabout = await aboutModel.findOne().sort('-id')
 
     if(getabout){
       const Updated = await aboutModel.findByIdAndUpdate(getabout._id, req.body,{new:true});
