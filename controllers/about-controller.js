@@ -25,10 +25,23 @@ const Post = async (req, res) => {
   try {
     const { error } = Aboutvalidation(req.body);
     if (error) return res.status(400).send(error.message);
-    const postabout = await aboutModel(req.body);
-    await postabout.save();
-    res.status(201).send({ status: true, postabout, message: 'successfully saved' });
-  } catch (error) {
+
+    const getabout = await aboutModel.findOne().sort('-created_at')
+
+    if(getabout){
+      const Updated = await aboutModel.findByIdAndUpdate(getabout._id, req.body,{new:true});
+      // await postabout.save();
+      res.status(201).send({Updated});
+  
+    }
+    else{
+      const postabout = await aboutModel(req.body);
+      await postabout.save();
+      res.status(201).send({ status: true, postabout, message: 'successfully saved' });
+  
+
+    }
+   } catch (error) {
     res.status(404).send(error.message);
   }
 };
