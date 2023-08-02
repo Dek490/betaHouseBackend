@@ -1,63 +1,55 @@
 const mongoose=require('mongoose')
 //schema
 const houseSchema=mongoose.Schema({
-    type:{
-        type:String,
-        required:true
-    },
-    area:{
-        type:String,
-        required:true
-    },
-    address:{
-        type:String,
-        required:true
-    },
-    age:{
-        type:String,
-        required:true
-    },
-    rent:{
-        type:Number,
-        required:true
-    },
-    deposite:{
-        type:Number,
-        required:true
-    },
-    parking:{
-        type:String,
-        required:true
-    },
-    imagePreview:{
-        type:String,
-        required:true
-    },
-    isAvailible:{
-        type:String,
-        required:true
-    },
-    rooms:{
-        type:Number,
-        required:true
-    },
-    bathRooms:{
-        type:String,
-        required:true
-    },
-    masterRoom:{
-        type:String,
-        required:true
-    },
-    descreption:{
-        type:String,
-        required:true
-    },
-    user:{
-        type:mongoose.Types.ObjectId,
-        ref:'users',
-        // required:true
-    },
+    type: {
+        type: String,
+        required: true
+      },
+      Address: {
+        type: String,
+        required: true
+      },
+      Age: {
+        type: String,
+        required: true
+      },
+      Rent: {
+        type: String,
+        required: true
+      },
+      Deposit: {
+        type: String,
+        required: true
+      },
+      Parking: {
+        type: String,
+        required: true
+      },
+      Images: {
+        type: String,
+        required: true
+      },
+      Status: {
+        type: String,
+        required: true
+      },
+      Rooms: {
+        type: String,
+        required: true
+      },
+      Pathrooms: {
+        type: String,
+        required: true
+      },
+      Owner: {
+        type: String,
+        required: true
+      }
+      // creatorID: {
+      //   type: mongoose.Types.ObjectId,
+      //   ref: 'User',
+      //   required: true
+      // }
 
 })
 //model

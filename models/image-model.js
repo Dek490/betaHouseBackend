@@ -1,13 +1,13 @@
 const mongoose=require('mongoose')
 //schema
 const imageSchema=mongoose.Schema({
-    house:{
-        type:mongoose.Types.ObjectId,
-        ref:'houses',
+    HomeID:{
+        type:mongoose.Types.ObjectId, 
+        ref:'Houses',
         required:true
     },
-    image:{
-        type:String,
+    ImagePath:{
+        type:String, 
         required:true
     },
 })

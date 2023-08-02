@@ -2,8 +2,8 @@ const joi = require('joi')
 //image validation
 function imagesValidation(image){
     const imageVal=joi.object({
-        house:joi.string().required(),
-        image:joi.string().required(),
+        HomeID: joi.string().required(),
+        ImagePath:joi.string().required(),
     })
     return imageVal.validate(image)
 }
