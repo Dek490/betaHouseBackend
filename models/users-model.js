@@ -1,12 +1,14 @@
 const mongoose=require('mongoose')
 //schema
-const userSchema=mongoose.Schema({
+const userSchema=new mongoose.Schema({
     name:{
         type:String,
+        
         required:true
     },
     email:{
         type:String,
+        unique:true,
         required:true
     },
     password:{
@@ -21,7 +23,8 @@ const userSchema=mongoose.Schema({
     },
     role:{
         type:String,
-        enum:['superAdmin','Admin','customercare',],
+        default:"user",
+        
         required:true
     },
     

@@ -4,11 +4,7 @@ const { imagesValidation } = require("../validations/image-validations");
 //get data
 const get = async (req, res) => {
   try {
-    const getdata = await imagesModel.find().populate({
-        path:'house',
-        model:'houses',
-        select:'_id address area type'
-    });
+    const getdata = await imagesModel.find() 
     res.status(200).send(getdata);
   } catch (error) {
     res.status(400).send(error.message);

@@ -9,7 +9,14 @@ app.use(express.json());
 mongoose.set('strictQuery', false);
 
 mongoose.connect('mongodb+srv://xasancumar:1zhHPp6abdOhvt1k@cluster0.d4o1wlf.mongodb.net/betaHOUSE')
-  .then(() => console.log('Connected!'));
+  .then(() => {
+    app.listen(process.env.Port,()=>{
+      console.log('listening on port',process.env.Port)
+  })
+    // console.log('started and Connected!')
+  }).catch((er)=>{
+    console.log("errors",er)
+  });
 
 
 //connecting to MongoMemoryServer
@@ -46,17 +53,19 @@ const homesSettingRoute=require('./routes/homesSetting-route')
 const galleryRoute=require('./routes/gallery-route')
 const aboutRoute=require('./routes/about-route')
 const imageRoute=require('./routes/image-route')
-const loginRoute=require('./routes/login-route')
-
-app.use('/users',userRoute)
+const loginRoute=require('./routes/login-route');
+const AuthernticateRoute  = require('./routes/AuthernicationMiddleWare')
+// /users  xagaan   userRoute
+app.use('/users',AuthernticateRoute(["Admin"]),userRoute)
 app.use('/houses',houseRoute)
 
-app.use('/service',serviceRoute)
+app.use('/service',AuthernticateRoute(["CustomerCare","Admin"]),serviceRoute)
 app.use('/client',ourClientRoute)
 app.use('/homeSetting',homesSettingRoute)
 app.use('/gallery',galleryRoute)
 app.use('/contact',contactRoute)
 app.use('/images',imageRoute)
+
 app.use('/about',aboutRoute)
 app.use('/login',loginRoute)
 
@@ -71,8 +80,6 @@ app.use('/login',loginRoute)
 
 
 //listing on port
-app.listen(process.env.Port,()=>{
-    console.log('listening on port',process.env.Port)
-})
+
 
 module.exports=app

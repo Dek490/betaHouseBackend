@@ -27,8 +27,14 @@ const Post = async (req, res) => {
     const { error } = usersValidation(req.body);
     if (error) return res.status(405).send(error.message);
     //post data
+
+
+    
     const postData = new usersModel(req.body);
     postData.password=await bcrypt.hash(postData.password,10)
+
+
+
     //if user is already exit
     const allUsers=await usersModel.find({email:req.body.email})
     if(allUsers.length>0) return res.status(409).send({status:false,message:'this user allready exit'})

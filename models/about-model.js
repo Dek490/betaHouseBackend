@@ -8,14 +8,10 @@ const aboutShmea = new mongoose.Schema({
   FaahFaaahinYar: {
     type: String,
     required: true,
-  },
-<<<<<<< HEAD
-},{timestamps:true});
-=======
-
-},
-{ timestamps: true });
->>>>>>> aba8bbbf15db145360c64140a0fb2c0e971f9b16
+  }, 
+ 
+},{ timestamps: true });
+ 
 
 const aboutModel = mongoose.model('About', aboutShmea);
 

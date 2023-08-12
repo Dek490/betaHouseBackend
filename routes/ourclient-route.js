@@ -6,13 +6,14 @@ const {
   Put,
   Delete,
 } = require('../controllers/ourclient-controller');
+const AuthernticateRoute = require('./AuthernicationMiddleWare');
 
 const router = express.Router();
 
-router.get('/', get);
-router.get('/:id', getById);
-router.post('/', Post);
-router.put('/:id', Put);
+router.get('/',AuthernticateRoute(["Admin","AdmissionOfficr","AmissonDirector","user"]), get);
+router.get('/:id',AuthernticateRoute(["Admin","CustomerCare"]), getById);
+router.post('/',AuthernticateRoute(["Admin","AdmissionDirector","AdmissionOfficer"]), Post);
+router.put('/:id',AuthernticateRoute(["Admin","AdmissionDirector"]), Put);
 router.delete('/:id',Delete)
 
 module.exports = router;

@@ -1,8 +1,9 @@
 const express=require('express')
+const  {Login} = require('../controllers/LoginController')
 const route=express.Router()
-const {login}=require('../controllers/login-controllers')
+ 
 //login
-route.post('/',login)
+route.post("/", Login)
 
 
 module.exports = route
